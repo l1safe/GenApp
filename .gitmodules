@@ -1,0 +1,3 @@
+[submodule "serverPart"]
+	path = serverPart
+	url = https://github.com/l1safe/GenApp.git
