@@ -1,0 +1,10 @@
+header{
+    display: flex;
+    flex-direction: row-reverse;
+    gap:1rem;
+    background-color: #592D4A;
+    padding: 1rem;
+    color: #F2F2F2;
+    font-weight: 800;
+    font-size: large;
+}

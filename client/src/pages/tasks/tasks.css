@@ -1,7 +1,8 @@
-.task_div{
+.task_box{
     border: 1px solid black;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 1rem;    
     padding: 1rem;
     padding-top: 0;

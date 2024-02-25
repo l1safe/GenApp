@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import './tasks.css';
 import './list_generator'
 import list_generator from './list_generator';
 
-const meowG = [{"task":"MEOWMEOW", "description":"HEHEHEHHE", "price":"50"}, {"task":"wowowowow", "description":"kruto", "price":"90909"}, {"task":"wowowowow", "description":"PF[OSDFP[ASO", "price":"90909"}] 
-
-
-
-
 // fetch('https://api.github.com/users/hacktivist123/repos')
-function App() {
+
+function Tasks() {
   const [contentt, setContent] = useState([{'title': 'загрузка...'}]);
   useEffect(() => {
     async function getAPI(){
@@ -24,9 +20,9 @@ function App() {
   console.log(contentt[0])
   return (
     <div className='main_div'>
-      {list_generator(contentt)}
+        {list_generator(contentt)}
     </div>
     );
 }
 
-export default App;
+export default Tasks;
