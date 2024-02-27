@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './tasks.css';
 import './list_generator'
+import Filter from './filter'
 import list_generator from './list_generator';
 
 // fetch('https://api.github.com/users/hacktivist123/repos')
@@ -19,8 +20,11 @@ function Tasks() {
 
   console.log(contentt[0])
   return (
-    <div className='main_div'>
-        {list_generator(contentt)}
+    <div className='tasks_div'>
+        <Filter />
+        <div className='tasks'>
+          {list_generator(contentt)}
+        </div>
     </div>
     );
 }
