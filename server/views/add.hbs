@@ -1,0 +1,66 @@
+<h2>Внесение нового объекта</h2>
+
+<form action="/add" method="POST">
+ <div class="row">
+    <div class="input-field col s6">
+      <input id="name" name="title" type="text" class="validate" required>
+      <label class="active" for="name">Название достижения</label>
+    </div>
+     <div class="input-field col s6 m6">
+        <select class="browser-default" name="region" required>
+        <option value="" >Выберите регион</option>
+        {{#each RegionsList}}
+          <option value="{{this.id}}">{{this.region}}</option>
+        {{/each}}
+        </select>
+    </div>
+  </div>
+  
+ <div class="row">
+    <div class="input-field col s6">
+      <input  id="descr" name="descr" type="text" class="validate">
+      <label class="active" for="descr">Описание</label>
+    </div>
+     <div class="input-field col s6 m6">
+        <select  class="browser-default" name="requirements">
+        <option value='' >Выберите зависимое задание</option>
+        {{#each GameInfoList}}
+            <option value='{{this.id}}' >{{this.title}}</option>
+        {{/each}}
+        </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="price" name="price" type="number" class="validate" required>
+      <label class="active" for="price">Цена</label>
+    </div>
+    <div class="input-field col s6 m6">
+        <select  class="browser-default" name="types" required>
+        <option value='' >Выберите тип задания</option>
+        {{#each TypesList}}
+            <option value='{{this.id}}' >{{this.typeName}}</option>
+        {{/each}}
+        </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s6 m6">
+        <button class="btn waves-effect waves-light" type="submit">Создать
+        </button>
+    </div>
+    <div class="col s6 m6">
+        <div class="switch">
+            <h5>Перейти к просмотру</h5>
+            <label>
+            Off
+            <input type="checkbox" name="check">
+            <span class="lever"></span>
+            On
+            </label>
+        </div>
+    </div>
+  </div>
+
+ </form>
