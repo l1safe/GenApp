@@ -19,6 +19,15 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    console.log(`path: ${req.path}`);
+    console.log(`method: ${req.method}`);
+    next();
+})
+
 app.use(express.static('public'));
 
 app.use(express.urlencoded({extended: true}));
@@ -35,7 +44,8 @@ const createPass = (page) => path.resolve(__dirname, 'views', `${page}.html`);
 
 app.get('/api', async (req, res) => {
     const select = await SelectForShow;
-    console.log(select)
+    // console.log(select)
+    console.log("Обращение к api");
     res.sendFile(createPass('api'));
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.end(JSON.stringify(select));

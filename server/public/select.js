@@ -31,7 +31,7 @@ async function selectALLGameInfoForShow() {
                 if ( item.reqInfo == null){
                   item.reqInfo = {title: 0};
                 };
-                console.log(item.reqInfo)
+                // console.log(item.reqInfo)
                 return {
                     id: item.id,
                     title: item.dataValues.name,

@@ -1,16 +1,16 @@
 <h3>Список объектов</h3>
 
-{{!-- <div class="row">
-    {{#each GameInfoList}}
+<div class="row">
+    {{#each content}}
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">{{this.title}}</span>
+          <span class="card-title">{{this.title}}; ID:{{this.id}}</span>
           <p>{{this.description}}</p>
         </div>
         <div class="card-action card-content white-text">
           <p>Регон:  {{this.region}}; ID: {{this.regID}}</p>
-          {{!-- {{#if this.requirements}}
+           {{#if this.requirements}}
           <p>Необходимое задание:  {{this.requirements}}; ID: {{this.reqID}}</p> 
           {{/if}} 
           <p>Тип задания:   {{this.typeName}}; ID: {{this.type_ID}}</p>
@@ -19,6 +19,6 @@
       </div>
     </div>
     {{/each}}
-  </div> --}}
+  </div>
   
         
