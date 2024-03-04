@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     console.log(req.body)
     if (req.body.requirements == ''){
         req.body.requirements = null;
@@ -64,7 +64,13 @@ router.post('/', (req, res) => {
     insertData(req.body.title, req.body.descr, req.body.region, req.body.requirements, req.body.price, req.body.types);
     
     if (req.body.check == 'on'){
-        res.redirect('/show');
+        let api = await fetch('http://localhost:4000/api');
+        let content = await api.json();
+        content.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+        res.render('show', {
+            title: 'Просмотр',
+            content
+        });
     }
     else{
         res.redirect('/add');

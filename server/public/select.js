@@ -4,16 +4,19 @@ const Reg = db.reg;
 const Type = db.type;
 
 
+
+
+
+Info.belongsTo(Type, {foreignKey: 'type'});
+Info.belongsTo(Reg, {foreignKey: 'region'});
+Info.belongsTo(Info, {as: 'reqID', foreignKey: 'requirements'});
 async function selectALLGameInfoForShow() {         
-        Info.belongsTo(Type, {foreignKey: 'type'});
-        Info.belongsTo(Reg, {foreignKey: 'region'});
-        Info.belongsTo(Info, {as: 'reqInfo', foreignKey: 'requirements'});
+        
         const results = await Info.findAll({
             attributes: ['id', ['title', 'name'], 'description', 'price', ['region', 'region_id'], ['requirements', 'req_id'], 'type'],
           include: [
             {
-              model: Info,
-              as: 'reqInfo',
+              association: 'reqID',
               attributes: ['title']
             },
             {
@@ -25,23 +28,25 @@ async function selectALLGameInfoForShow() {
                 attributes: ['typeName']
             }
           ]
-        });
+        }
+          );
         
             return results.map(item => {
-                if ( item.reqInfo == null){
-                  item.reqInfo = {title: 0};
+                if ( item.reqID == null){
+                  item.reqID = {title: 0};
                 };
-                // console.log(item.reqInfo)
+                const path = item.dataValues;
+                console.log(item.dataValues)
                 return {
-                    id: item.id,
-                    title: item.dataValues.name,
-                    description: item.description,
+                    id: path.id,
+                    title: path.name,
+                    description: path.description,
                     region: item.Region.region,
-                    requirements: item.reqInfo.title,
-                    reqID: item.dataValues.req_id,
-                    regID: item.dataValues.region_id,
-                    price: item.price,
-                    type_ID: item.type,
+                    requirements: item.reqID.title,
+                    reqID: path.req_id,
+                    regID: path.region_id,
+                    price: path.price,
+                    type_ID: path.type,
                     typeName: item.Type.typeName
     
                 };
@@ -50,4 +55,8 @@ async function selectALLGameInfoForShow() {
 
 
 
-module.exports = selectALLGameInfoForShow();
+module.exports = {selectALLGameInfoForShow};
+
+
+
+

@@ -5,7 +5,8 @@ const homeRoutes = require('./routes/home');
 const addRoutes = require('./routes/add');
 const showRoutes = require('./routes/show');
 const editRoutes = require('./routes/edit');
-const SelectForShow = require('./public/select')
+const {selectALLGameInfoForShow} = require('./public/select');
+
 
 const app = express();
 
@@ -43,9 +44,7 @@ app.use('/edit', editRoutes);
 const createPass = (page) => path.resolve(__dirname, 'views', `${page}.html`);
 
 app.get('/api', async (req, res) => {
-    const select = await SelectForShow;
-    // console.log(select)
-    console.log("Обращение к api");
+    let select = await selectALLGameInfoForShow();
     res.sendFile(createPass('api'));
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.end(JSON.stringify(select));
