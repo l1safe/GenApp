@@ -39,8 +39,8 @@ async function selectGameInfo() {
 }
 
 
-async function insertData(title, description, region, requirements, price, type) {
-    const info = await Info.create({ title: title, description: description, region: region, requirements: requirements, price: price, type: type});
+async function insertData(title, description, region, requirements, price, type, rank) {
+    const info = await Info.create({ title: title, description: description, region: region, requirements: requirements, price: price, type: type, rank: rank});
     console.log("Создан объект! Название объекта:", info.title);
 }
 
@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
     if (req.body.requirements == ''){
         req.body.requirements = null;
     }
-    insertData(req.body.title, req.body.descr, req.body.region, req.body.requirements, req.body.price, req.body.types);
+    insertData(req.body.title, req.body.descr, req.body.region, req.body.requirements, req.body.price, req.body.types, req.body.rank);
     
     if (req.body.check == 'on'){
         let api = await fetch('http://localhost:4000/api');

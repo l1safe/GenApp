@@ -5,16 +5,17 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">{{this.title}}; ID:{{this.id}}</span>
+          <span class="card-title"><p class="id-col"> ID:{{this.id}}</p> {{this.title}};</span>
           <p>{{this.description}}</p>
         </div>
         <div class="card-action card-content white-text">
-          <p>Регон:  {{this.region}}; ID: {{this.regID}}</p>
+          <p class="p-show">Ранг:  <span style="color:#18f5ed">{{#if this.rank}}{{this.rank}}</span> {{else}} Не имеет значения {{/if}}</span></p>
+          <p class="p-show">Регон:   <span style="color:#18f5ed">{{this.region}};</span> <span class="id-col"> ID: {{this.regID}}</span></p>
            {{#if this.requirements}}
-          <p>Необходимое задание:  {{this.requirements}}; ID: {{this.reqID}}</p> 
+          <p class="p-show">Необходимое задание:   <span style="color:#18f5ed">{{this.requirements}};</span>      <span class="id-col"> ID: {{this.reqID}}</span></p> 
           {{/if}} 
-          <p>Тип задания:   {{this.typeName}}; ID: {{this.type_ID}}</p>
-          <p>Примогемы: {{this.price}}</p>
+          <p class="p-show">Тип задания:  <span style="color:#18f5ed">{{this.typeName}};</span> <span class="id-col"> ID: {{this.type_ID}}</span></p>
+          <p class="p-show">Примогемы:  <span style="color:#18f5ed">{{this.price}}</span></p>
         </div>
       </div>
     </div>

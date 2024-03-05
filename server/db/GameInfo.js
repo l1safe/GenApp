@@ -23,7 +23,10 @@ module.exports = function (sequalize) {
         },
         type: {
             type: Sequalize.INTEGER()
-        }    
+        },
+        rank: {
+            type: Sequalize.INTEGER()
+        },    
     }, {
         timestamps: false,
         tableName: 'gameInfo'

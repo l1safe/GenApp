@@ -13,7 +13,7 @@ Info.belongsTo(Info, {as: 'reqID', foreignKey: 'requirements'});
 async function selectALLGameInfoForShow() {         
         
         const results = await Info.findAll({
-            attributes: ['id', ['title', 'name'], 'description', 'price', ['region', 'region_id'], ['requirements', 'req_id'], 'type'],
+            attributes: ['id', ['title', 'name'], 'description', 'price', ['region', 'region_id'], ['requirements', 'req_id'], 'type', 'rank'],
           include: [
             {
               association: 'reqID',
@@ -47,7 +47,9 @@ async function selectALLGameInfoForShow() {
                     regID: path.region_id,
                     price: path.price,
                     type_ID: path.type,
-                    typeName: item.Type.typeName
+                    typeName: item.Type.typeName,
+                    rank: path.rank
+
     
                 };
             });
