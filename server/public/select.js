@@ -57,7 +57,41 @@ async function selectALLGameInfoForShow() {
 
 
 
-module.exports = {selectALLGameInfoForShow};
+async function selectRegions() {                
+  const results = await Reg.findAll();
+      return results.map(item => {
+          return {
+              id: item.id,
+              region: item.region
+          };
+      });
+}
+
+async function selectTypes() {                
+  const results = await Type.findAll();
+      return results.map(item => {
+          return {
+              id: item.id,
+              typeName: item.typeName
+          };
+      });
+}
+
+
+
+async function selectGameInfo() {                
+  const results = await Info.findAll();
+      return results.map(item => {
+          return {
+              id: item.id,
+              title: item.title
+          };
+      });
+}
+
+
+
+module.exports = {selectALLGameInfoForShow, selectRegions, selectTypes, selectGameInfo};
 
 
 

@@ -15,8 +15,18 @@
         <form action="/show" method="POST">
         <div class="col s4">
         <input type="hidden" name="id" value="{{this.id}}">
-        <input type="hidden" name="page" value="{{page}}">
+        <input type="hidden" name="title" value="{{this.title}}">
+        <input type="hidden" name="price" value="{{this.price}}">
+        <input type="hidden" name="description" value="{{this.description}}">
+        <input type="hidden" name="rank" value="{{this.rank}}">
+        <input type="hidden" name="region" value="{{this.regID}}">
+        <input type="hidden" name="req" value="{{this.reqID}}">
+        <input type="hidden" name="type" value="{{this.type_ID}}">
+        <input type="hidden" name="regionName" value="{{this.region}}">
+        <input type="hidden" name="typeName" value="{{this.typeName}}">
+        <input type="hidden" name="reqName" value="{{this.requirements}}">
         <button class="waves-effect red darken-4 btn right" name="btn" type="submit" value="delete">delete</button>
+        <button class="waves-effect waves-light btn right" name="btn" type="submit" value="edit">edit</button>
         </div>
         </form>
         

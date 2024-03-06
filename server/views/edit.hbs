@@ -1,1 +1,69 @@
-<h1>Скоро тут будет возможность редактирования объекторв</h1>
+<h3>Редактирование</h3>
+<h5>ID Задания: {{oldValues.id}}</h5>
+
+<form action="/edit" method="POST">
+<input type="hidden" name="id" value="{{oldValues.id}}">
+ <div class="row">
+    <div class="input-field col s6">
+      <input id="name" name="title" type="text" class="validate" value="{{oldValues.title}}" required>
+      <label class="active" for="name">Название достижения</label>
+    </div>
+     <div class="input-field col s6 m6">
+      <span>Регион</span>
+        <select class="browser-default" name="region" value="{{oldValues.title}}" required>
+        <option value="{{oldValues.region}}" >{{oldValues.regionName}}</option>
+        {{#each RegionsList}}
+          <option value="{{this.id}}">{{this.region}}</option>
+        {{/each}}
+        </select>
+    </div>
+  </div>
+  
+ <div class="row">
+    <div class="input-field col s6">
+      <input  id="descr" name="descr" type="text" class="validate" value="{{oldValues.description}}" >
+      <label class="active" for="descr">Описание</label>
+    </div>
+     <div class="input-field col s6 m6">
+      <span>Зависимое задание</span>
+        <select  class="browser-default" name="requirements">
+        <option value='{{oldValues.req}}'>{{oldValues.reqName}}</option>
+        {{#each GameInfoList}}
+            <option value='{{this.id}}' >{{this.title}}</option>
+        {{/each}}
+        <option value='' >Нет</option>
+        </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="price" name="price" type="number" class="validate" value="{{oldValues.price}}">
+      <label class="active" for="price">Цена</label>
+    </div>
+    <div class="input-field col s6 m6">
+        <span>Тип задания</span>
+        <select  class="browser-default" name="types" required>
+        <option value='{{oldValues.type}}'>{{oldValues.typeName}}</option>
+        {{#each TypesList}}
+            <option value='{{this.id}}' >{{this.typeName}}</option>
+        {{/each}}
+        </select>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="input-field col s6">
+      <input id="rank" name="rank" type="number" class="validate" value="{{oldValues.rank}}">
+      <label class="active" for="rank">Ранг</label>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="col s6 m6">
+        <button class="btn waves-effect waves-light" type="submit">Обновить
+        </button>
+    </div>
+  </div>
+
+
+ </form>
