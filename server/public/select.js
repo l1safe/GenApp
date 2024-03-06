@@ -36,7 +36,7 @@ async function selectALLGameInfoForShow() {
                   item.reqID = {title: 0};
                 };
                 const path = item.dataValues;
-                console.log(item.dataValues)
+                // console.log(item.dataValues)
                 return {
                     id: path.id,
                     title: path.name,
